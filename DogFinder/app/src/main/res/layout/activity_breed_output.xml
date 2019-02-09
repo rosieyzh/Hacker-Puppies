@@ -7,27 +7,16 @@
     tools:context=".BreedOutput">
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="The breed of this dog is: "
-        android:textAlignment="center"
-        android:textAllCaps="true"
-        android:textStyle="bold"
-        tools:layout_editor_absoluteX="114dp"
-        tools:layout_editor_absoluteY="430dp" />
-
-    <TextView
         android:id="@+id/textView2"
         android:layout_width="406dp"
         android:layout_height="51dp"
         android:text="@string/dog_breed"
-        android:textAlignment="center"
         android:textAllCaps="true"
+        android:textColorHighlight="FFD700"
         android:textSize="36sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="2dp"
-        tools:layout_editor_absoluteY="460dp" />
+        tools:layout_editor_absoluteX="5dp"
+        tools:layout_editor_absoluteY="363dp" />
 
     <ImageView
         android:id="@+id/imageView3"
