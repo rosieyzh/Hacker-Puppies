@@ -10,15 +10,22 @@ import android.widget.ImageButton;
 
 public class Analyze extends AppCompatActivity {
     private ImageView imageView;
+
+    private Uri bmpUri;
+
     private ImageButton takePictureButton;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_analyze);
 
-        Uri dog = getIntent().getParcelableExtra("dog");
+        bmpUri = getIntent().getParcelableExtra("dog");
         imageView = (ImageView) findViewById(R.id.userPic);
+
+        imageView.setImageURI(bmpUri);
+
         imageView.setImageURI(dog);
 
         takePictureButton = (ImageButton) findViewById(R.id.Analysis);
@@ -27,6 +34,7 @@ public class Analyze extends AppCompatActivity {
 
     public void swapLoading(View view) {
         Intent swapLoad = new Intent(this, LoadingScreen.class);
+        swapLoad.putExtra("dog", bmpUri);
         startActivity(swapLoad);
     }
 }
