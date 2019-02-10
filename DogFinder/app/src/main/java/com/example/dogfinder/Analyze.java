@@ -26,7 +26,6 @@ public class Analyze extends AppCompatActivity {
 
         imageView.setImageURI(bmpUri);
 
-        imageView.setImageURI(dog);
 
         takePictureButton = (ImageButton) findViewById(R.id.Analysis);
 

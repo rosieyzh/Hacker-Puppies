@@ -5,19 +5,14 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
-
-public class BreedOutput extends AppCompatActivity {
-    private Uri bmpUri;
-    private ImageView imageView;
-
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageButton;
+import android.view.View;
+import android.content.Intent;
 
 public class BreedOutput extends AppCompatActivity {
     private ImageButton takePictureButton;
+    private Uri bmpUri;
+    private ImageView imageView;
 
 
     @Override
