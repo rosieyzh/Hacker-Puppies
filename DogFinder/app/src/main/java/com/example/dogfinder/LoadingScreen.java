@@ -21,7 +21,7 @@ public class LoadingScreen extends AppCompatActivity {
     private Uri bmpUri;
 
 
-    private static int TIME_OUT = 9000;
+    private static int TIME_OUT = 11250;
 
     /**
      * Whether or not the system UI should be auto-hidden after

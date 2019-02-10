@@ -18,7 +18,7 @@
         android:backgroundTint="@color/McWicsYellow"
         android:fontFamily="@font/overpass"
         android:text="@string/dog_breed"
-        android:textSize="28sp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.034"
