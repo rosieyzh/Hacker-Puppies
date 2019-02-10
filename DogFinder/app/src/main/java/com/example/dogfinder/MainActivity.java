@@ -9,37 +9,34 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v4.content.FileProvider;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.graphics.Bitmap;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
-    private Button takePictureButton;
+    private ImageButton takePictureButton;
     private ImageView imageView;
     private File file;
     private Uri bmpUri;
-    private Bitmap bitmap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        takePictureButton = (Button) findViewById(R.id.button_image);
-        imageView = (ImageView) findViewById(R.id.imageView);
+        takePictureButton = (ImageButton) findViewById(R.id.button_image);
+        imageView = (ImageView) findViewById(R.id.logo);
 
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
             takePictureButton.setEnabled(false);
             ActivityCompat.requestPermissions(this, new String[] { Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE }, 0);
         }
-
     }
 
     @Override
@@ -91,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void swapAnalyze() {
         Intent swap = new Intent(this, Analyze.class);
-
+        swap.putExtra("dog", bmpUri);
         startActivity(swap);
     }
 
