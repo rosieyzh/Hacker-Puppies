@@ -18,13 +18,16 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:background="@color/DarkerMcWicsYello"
+        android:fontFamily="@font/overpass"
         android:onClick="takePicture"
         android:text="Woof!"
         android:textSize="36sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logo" />
+        app:layout_constraintTop_toBottomOf="@+id/logo"
+        app:layout_constraintVertical_bias="0.26" />
 
     <ImageView
         android:id="@+id/test"
@@ -35,8 +38,8 @@
 
     <ImageView
         android:id="@+id/logo"
-        android:layout_width="373dp"
-        android:layout_height="486dp"
+        android:layout_width="322dp"
+        android:layout_height="403dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="44dp"
         android:layout_marginEnd="8dp"
