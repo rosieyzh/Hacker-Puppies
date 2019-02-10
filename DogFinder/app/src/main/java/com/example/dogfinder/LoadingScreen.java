@@ -1,10 +1,10 @@
 package com.example.dogfinder;
 
 import android.annotation.SuppressLint;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -13,7 +13,7 @@ import android.view.View;
  * status bar and navigation/system bar) with user interaction.
  */
 public class LoadingScreen extends AppCompatActivity {
-    private String UPLOAD_IMAGE = "http://YOUR_SERVER/api/poi/upload";
+
     /**
      * Whether or not the system UI should be auto-hidden after
      * {@link #AUTO_HIDE_DELAY_MILLIS} milliseconds.
