@@ -7,21 +7,18 @@
     android:background="@drawable/background"
     tools:context=".MainActivity">
 
-    <Button
+    <ImageButton
         android:id="@+id/button_image"
         android:layout_width="200dp"
-        android:layout_height="76dp"
+        android:layout_height="122dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:background="@color/DarkerMcWicsYello"
-        android:fontFamily="@font/overpass"
+        android:background="@drawable/button_woof"
         android:onClick="takePicture"
-        android:text="Woof!"
-        android:textSize="36sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
