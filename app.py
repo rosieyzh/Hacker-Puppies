@@ -35,11 +35,7 @@ with open('encoder.pkl','rb') as f:
 
 def create_model():
     global model
-    backbone = InceptionResNetV2(weights='imagenet', include_top=False, pooling='avg', input_shape=(299,299,3))
-    outputs = Dense(120, activation='softmax')(backbone.output)
-    model = Model(inputs=backbone.input, outputs=outputs)
-    model.load_weights('model-v1.h5')
-    model.compile(optimizer='adam', loss='categorical_crossentropy', metrics = ["accuracy"])
+    model = load_model('model.h5')
     model._make_predict_function()
 
 
@@ -67,16 +63,17 @@ def un_onehot(data):
 one_hot
 
 
-# In[7]:
+# In[9]:
 
 
-@app.route('/upload',methods=['GET'])
+@app.route('/',methods=['POST'])
 def upload_file():
-    file = request.files['image']
-    x = preprocess_image(file)
-    breed = model.predict(x)
-    label = un_onehot(breed)
-    return json.dumps(dict("breed:", label))
+    if image in request.files:   
+        file = request.files['image']
+        x = preprocess_image(file)
+        breed = model.predict(x)
+        label = un_onehot(breed)
+        return json.dumps(dict("breed:", label))
 
 
 # In[ ]:
@@ -88,14 +85,9 @@ def upload_file():
 # In[8]:
 
 
-@app.route('/')
-def render_static():
-    upload_file()
-    return render_template('%s.html' %index)
-
 if __name__ == '__main__':
     create_model()
-    app.run(host='0.0.0.0',port=8000, debug = True)
+    app.run(host='0.0.0.0',port=8000,debug = True)
 
 
 # In[ ]:
