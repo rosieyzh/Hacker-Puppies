@@ -66,13 +66,14 @@ one_hot
 # In[7]:
 
 
-@app.route('/upload',methods=['GET'])
+@app.route('/',methods=['GET'])
 def upload_file():
-    file = request.files['image']
-    x = preprocess_image(file)
-    breed = model.predict(x)
-    label = un_onehot(breed)
-    return json.dumps(dict("breed:", label))
+    if image in request.files:   
+        file = request.files['image']
+        x = preprocess_image(file)
+        breed = model.predict(x)
+        label = un_onehot(breed)
+        return json.dumps(dict("breed:", label))
 
 
 # In[ ]:
@@ -86,7 +87,7 @@ def upload_file():
 
 if __name__ == '__main__':
     create_model()
-    app.run(debug = True)
+    app.run(host='0.0.0.0',port=8000,debug = True)
 
 
 # In[ ]:
