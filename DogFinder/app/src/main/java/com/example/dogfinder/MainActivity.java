@@ -3,20 +3,18 @@ package com.example.dogfinder;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
-import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v4.content.FileProvider;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -59,31 +57,19 @@ public class MainActivity extends AppCompatActivity {
 
         // wrap File object into a content provider. NOTE: authority here should match authority in manifest declaration
         bmpUri = FileProvider.getUriForFile(this,"com.example.dogfinder", file);
-        intent.putExtra("imageUri", bmpUri.toString());
+        intent.putExtra(MediaStore.EXTRA_OUTPUT, bmpUri);
+
         startActivityForResult(intent, 100);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == RESULT_OK)
-        {
-            try {
-                Uri imageUri = data.getData();
-                Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), imageUri);
-                ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
-                byte[] byteArray = stream.toByteArray();
-                Intent switch2 = new Intent(this, Analyze.class);
-                switch2.putExtra("picture", byteArray);
-                startActivity(switch2);
-            } catch (Exception e) {
-                System.out.println("Error");
+        if (requestCode == 100) {
+            if (resultCode == RESULT_OK) {
+                imageView.setImageURI(bmpUri);
             }
-
         }
-        auto2();
-
+        swapAnalyze();
     }
 
     private static File getOutputMediaFile(){
@@ -101,8 +87,10 @@ public class MainActivity extends AppCompatActivity {
                 "IMG_"+ timeStamp + ".jpg");
     }
 
-    public void auto2() {
-        Intent switch2 = new Intent(this, Analyze.class);
-        startActivity(switch2);
+    public void swapAnalyze() {
+        Intent swap = new Intent(this, Analyze.class);
+
+        startActivity(swap);
     }
+
 }
