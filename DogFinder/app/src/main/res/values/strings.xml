@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">DogFinder</string>
+    <string name="dog_breed">shiba</string>
 </resources>
