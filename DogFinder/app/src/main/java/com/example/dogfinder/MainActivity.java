@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         takePictureButton = (Button) findViewById(R.id.button_image);
-        imageView = (ImageView) findViewById(R.id.imageview);
+        imageView = (ImageView) findViewById(R.id.imageView);
 
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
             takePictureButton.setEnabled(false);
@@ -69,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
                 imageView.setImageURI(bmpUri);
             }
         }
+        auto2();
     }
 
     private static File getOutputMediaFile(){
@@ -86,4 +87,8 @@ public class MainActivity extends AppCompatActivity {
                 "IMG_"+ timeStamp + ".jpg");
     }
 
+    public void auto2() {
+        Intent switch2 = new Intent(this, BreedOutput.class);
+        startActivity(switch2);
+    }
 }
