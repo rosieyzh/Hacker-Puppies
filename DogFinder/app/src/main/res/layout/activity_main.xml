@@ -9,16 +9,18 @@
 
     <Button
         android:id="@+id/button_image"
-        android:layout_width="wrap_content"
-        android:layout_height="48dp"
+        android:layout_width="200dp"
+        android:layout_height="76dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
+        android:background="@color/DarkerMcWicsYello"
         android:onClick="takePicture"
-        android:text="Take a picture!"
+        android:text="Woof!"
+        android:textSize="36sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -42,13 +44,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logo" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/ic_launcher"
-        tools:layout_editor_absoluteX="10dp"
-        tools:layout_editor_absoluteY="530dp" />
 
 </android.support.constraint.ConstraintLayout>
