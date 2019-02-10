@@ -6,10 +6,15 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ImageButton;
 
 public class Analyze extends AppCompatActivity {
     private ImageView imageView;
+
     private Uri bmpUri;
+
+    private ImageButton takePictureButton;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,7 +23,13 @@ public class Analyze extends AppCompatActivity {
 
         bmpUri = getIntent().getParcelableExtra("dog");
         imageView = (ImageView) findViewById(R.id.userPic);
+
         imageView.setImageURI(bmpUri);
+
+        imageView.setImageURI(dog);
+
+        takePictureButton = (ImageButton) findViewById(R.id.Analysis);
+
     }
 
     public void swapLoading(View view) {

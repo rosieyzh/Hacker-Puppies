@@ -2,7 +2,9 @@ package com.example.dogfinder;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+
 import android.net.Uri;
+
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.ActionBar;
@@ -15,7 +17,11 @@ import android.view.View;
  * status bar and navigation/system bar) with user interaction.
  */
 public class LoadingScreen extends AppCompatActivity {
+
     private Uri bmpUri;
+
+
+    private static int TIME_OUT = 9000;
 
     /**
      * Whether or not the system UI should be auto-hidden after
@@ -111,8 +117,21 @@ public class LoadingScreen extends AppCompatActivity {
         // while interacting with the UI.
         findViewById(R.id.dummy_button).setOnTouchListener(mDelayHideTouchListener);
 
+
+		
         bmpUri = getIntent().getParcelableExtra("dog");
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent i = new Intent(LoadingScreen.this, BreedOutput.class);
+                startActivity(i);
+                finish();
+            }
+        }, TIME_OUT);
+
     }
+
 
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
