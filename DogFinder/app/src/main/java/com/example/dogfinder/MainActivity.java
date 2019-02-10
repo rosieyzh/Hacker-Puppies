@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private ImageView imageView;
     private File file;
     private Uri bmpUri;
+    private Bitmap bitmap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,21 +68,27 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == RESULT_OK)
-        {
-            try {
-                Uri imageUri = data.getData();
-                Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), imageUri);
-                ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
-                byte[] byteArray = stream.toByteArray();
-                Intent switch2 = new Intent(this, Analyze.class);
-                switch2.putExtra("picture", byteArray);
-                startActivity(switch2);
-            } catch (Exception e) {
-                System.out.println("Error");
-            }
+        if (requestCode == 100) {
 
+            if (resultCode == RESULT_OK) {
+                try {
+
+                    if(data.getData()==null){
+                        bitmap = (Bitmap)data.getExtras().get("data");
+                    }else{
+                        bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), data.getData());
+                    }
+                    ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                    bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                    byte[] byteArray = stream.toByteArray();
+                    Intent switch2 = new Intent(this, Analyze.class);
+                    switch2.putExtra("picture", byteArray);
+                    startActivity(switch2);
+                } catch (Exception e) {
+                    System.out.println("Error");
+                }
+
+            }
         }
         auto2();
 
