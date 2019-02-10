@@ -125,6 +125,7 @@ public class LoadingScreen extends AppCompatActivity {
             @Override
             public void run() {
                 Intent i = new Intent(LoadingScreen.this, BreedOutput.class);
+                i.putExtra("dog", bmpUri);
                 startActivity(i);
                 finish();
             }
@@ -184,11 +185,5 @@ public class LoadingScreen extends AppCompatActivity {
     private void delayedHide(int delayMillis) {
         mHideHandler.removeCallbacks(mHideRunnable);
         mHideHandler.postDelayed(mHideRunnable, delayMillis);
-    }
-
-    public void switchOutput() {
-        Intent switchOutput = new Intent(this, BreedOutput.class);
-        switchOutput.putExtra("dog", bmpUri);
-        startActivity(switchOutput);
     }
 }
