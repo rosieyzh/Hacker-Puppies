@@ -9,19 +9,21 @@ import android.widget.ImageView;
 
 public class Analyze extends AppCompatActivity {
     private ImageView imageView;
+    private Uri bmpUri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_analyze);
 
-        Uri dog = getIntent().getParcelableExtra("dog");
+        bmpUri = getIntent().getParcelableExtra("dog");
         imageView = (ImageView) findViewById(R.id.userPic);
-        imageView.setImageURI(dog);
+        imageView.setImageURI(bmpUri);
     }
 
     public void swapLoading(View view) {
         Intent swapLoad = new Intent(this, LoadingScreen.class);
+        swapLoad.putExtra("dog", bmpUri);
         startActivity(swapLoad);
     }
 }
