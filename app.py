@@ -63,10 +63,10 @@ def un_onehot(data):
 one_hot
 
 
-# In[7]:
+# In[9]:
 
 
-@app.route('/',methods=['GET'])
+@app.route('/',methods=['POST'])
 def upload_file():
     if image in request.files:   
         file = request.files['image']
