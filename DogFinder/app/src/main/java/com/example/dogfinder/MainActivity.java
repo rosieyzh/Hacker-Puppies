@@ -19,12 +19,11 @@ import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity {
     private Button takePictureButton;
     private ImageView imageView;
     private File file;
     private Uri bmpUri;
-    ImageView imageToUpload, downloadImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,17 +36,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
             takePictureButton.setEnabled(false);
             ActivityCompat.requestPermissions(this, new String[] { Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE }, 0);
-        }
-        imageToUpload = (ImageView) findViewById(R.id.logo);
-        imageToUpload.setOnClickListener(this);
-
-    }
-
-    @Override
-    public void onClick(View v) {
-        if(v.getId() == R.id.logo){
-
-
         }
     }
 

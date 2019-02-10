@@ -1,8 +1,10 @@
 package com.example.dogfinder;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.ImageView;
 
 public class Analyze extends AppCompatActivity {
@@ -16,5 +18,10 @@ public class Analyze extends AppCompatActivity {
         Uri dog = getIntent().getParcelableExtra("dog");
         imageView = (ImageView) findViewById(R.id.userPic);
         imageView.setImageURI(dog);
+    }
+
+    public void swapLoading(View view) {
+        Intent swapLoad = new Intent(this, LoadingScreen.class);
+        startActivity(swapLoad);
     }
 }
