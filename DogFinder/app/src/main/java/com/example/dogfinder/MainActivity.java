@@ -14,6 +14,9 @@ import android.support.v4.content.FileProvider;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.graphics.Bitmap;
+import java.io.ByteArrayOutputStream;
+import android.util.Log;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -57,19 +60,31 @@ public class MainActivity extends AppCompatActivity {
 
         // wrap File object into a content provider. NOTE: authority here should match authority in manifest declaration
         bmpUri = FileProvider.getUriForFile(this,"com.example.dogfinder", file);
-        intent.putExtra(MediaStore.EXTRA_OUTPUT, bmpUri);
-
+        intent.putExtra("imageUri", bmpUri.toString());
         startActivityForResult(intent, 100);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == 100) {
-            if (resultCode == RESULT_OK) {
-                imageView.setImageURI(bmpUri);
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK)
+        {
+            try {
+                Uri imageUri = data.getData();
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), imageUri);
+                ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                byte[] byteArray = stream.toByteArray();
+                Intent switch2 = new Intent(this, Analyze.class);
+                switch2.putExtra("picture", byteArray);
+                startActivity(switch2);
+            } catch (Exception e) {
+                System.out.println("Error");
             }
+
         }
         auto2();
+
     }
 
     private static File getOutputMediaFile(){
@@ -88,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void auto2() {
-        Intent switch2 = new Intent(this, BreedOutput.class);
+        Intent switch2 = new Intent(this, Analyze.class);
         startActivity(switch2);
     }
 }
