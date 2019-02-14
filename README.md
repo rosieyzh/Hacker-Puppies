@@ -5,15 +5,20 @@ Entry for McWics Hackathon 2019. Check out our DevPost submission [here](https:/
 
 Below are screenshots of the app in action.
 
-![](demo/Main.png)
+Main/Welcome Screen
+<img src="demo/Main.png" width="270" height="480">
 
-![](demo/Camera_Main.png)
+Camera Interface
+<img src="demo/Camera_Main.png" width="270" height="480">
 
-![](demo/Analyze.png)
+Input Confirmation Screen
+<img src="demo/Analyze.png" width="270" height="480">
 
-![](demo/Loading.png)
+Loading Screen
+<img src="demo/Loading.png" width="270" height="480">
 
-![](demo/Output.png)
+Output/Result Screen
+<img src="demo/Output.png" width="270" height="480">
 
 ## Authors
 Developed by [Rosie Zhao](https://github.com/rosieyzh), [Danny Xie](https://github.com/dnxie12) and [Zedian Xiao](https://github.com/zedian) of McGill University. 
